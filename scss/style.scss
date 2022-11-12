@@ -1,0 +1,291 @@
+/*reiniciando la hoja*/
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/*importando variables*/
+@import "variables/variables";
+@import "variables/botonesdepago";
+
+/*incorporando bosstrap*/
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+
+/*seteando íconos de redes sociales*/
+.bi-facebook{
+    color: black;
+    font-size: 40px;
+
+    &:hover{ color: blue;}
+}
+
+.bi-twitter{
+    color: black;
+    font-size: 40px;
+
+    &:hover{ color: lightblue;}
+}
+
+.bi-instagram{
+    color: black;
+    font-size: 40px;
+
+    &:hover{ color: indigo;}
+}
+
+/*seteo estructural de páginas mediante grilla*/
+.grilla{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto 1fr auto auto;
+    grid-template-areas: "1header"
+                         "2nav"
+                         "3main"
+                         "4footer";
+    min-height: 100vh;
+    font-family: $fuente_principal;
+}
+
+/*setero general de header*/
+header{
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    }
+
+/*setero general del Nav*/
+    nav{
+        background-color: white;
+        
+        ul{
+            display:flex;
+            height: 100%;
+            justify-content: space-evenly;
+            align-items: center;
+            list-style-type: none;
+                
+        a{
+            text-decoration: none;
+            color: lightskyblue;
+            font-size: 35px;
+            }
+        }
+    }
+
+    /*seteo de galeria*/
+    .grid_section{
+        display:grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 10% 70% 10%;
+        grid-template-areas: "img titulo"
+                             "img parrafo"
+                             "img boton";
+        justify-content: space-around;
+        align-content: space-evenly;
+        justify-items: center;
+        align-items: center;
+    
+    }
+
+   
+    /*seteo de títulos*/
+    .titulo{
+        height: 100%;
+        width: 100%;
+        font-weight: 500px;
+        font-size: 55px;
+    }
+
+    .titulo--principal{
+        @extend .titulo;
+        font-family: $fuente_principal;
+        color: $color_fuenteprincipal;
+        text-decoration: underline;
+        font-weight: 500;
+        font-size: 80px;
+    }
+    
+    .titulo--secundario{
+        @extend .titulo;
+        font-family: $fuente_secundaria;
+        color: $color_fuentesecundaria;
+        text-align: center;
+    }
+
+    /*seteo de parrafos*/
+    .parrafossecundarios{
+        font-family: $fuente_parrafo;
+        color: $color_fuenteparrafo;
+    }
+
+    .img_section{
+        width: 100%;
+        height: 100%;
+        grid-area:img;
+    }
+    
+    #grid_main{
+        display: flex;
+        flex-direction: column;
+        
+    }
+    
+    .imagenbanner{
+        width: 100%;
+        height: 100%;
+        max-height: 50%;
+        object-fit: contain;
+    
+    }
+
+/*seteo del footer*/
+    footer{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        background-image: linear-gradient(to left, rgb(128, 85, 0), rgb(255, 0, 0));
+        
+        p{
+            font-size: 15px;
+            margin-top: 10px;
+        }
+      }
+
+/*seteo imagen central*/
+.campoimagen{
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: grayscale(100%);
+    
+    &:hover{ 
+        filter: grayscale(0%);
+        border-radius: 5%;
+        transition: 3s;
+    }
+}
+
+.divdetres{
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 20px;
+    color: blue;
+    font-weight: 50px;
+}
+
+/*seteo grilla*/
+
+.grillaqs{
+    display:grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: "a1 a2 a3"
+                         "a4 a5 a6"
+                         "a7 a8 a9"
+    
+}
+
+.imgqs1{
+    
+    grid-area: a1;
+
+    &:hover{ transform: rotate(45deg);
+    }
+}
+ 
+ 
+ .imgqs2{
+     grid-area: a2;
+
+     &:hover{ transform: rotate(45deg);}
+ }
+ 
+ .imgqs3{
+     grid-area: a3;
+
+     &:hover{ transform: rotate(45deg);}
+ }
+ 
+  .tituloqs1{
+     grid-area: a4;
+ }
+ 
+ .tituloqs2{
+     grid-area: a5;
+ }
+ 
+ .tituloqs3{
+     grid-area: a6;
+ }
+
+ /*seteo imagen adorno*/
+
+ .imagengallina{
+    animation-name: colorfruta;
+    animation-duration: 8s;
+    animation-iteration-count: 1;
+    width: 90%;
+    height: 350px;
+}
+
+/*seteo de botones con mixin*/
+.btn--efvo{
+    @include estilo_botonpago( yellow , red)
+}
+
+.btn--tarj{
+    @include estilo_botonpago( red, yellow)
+}
+
+.btn--cc{
+    @include estilo_botonpago( $color_fuenteprincipal , $color_fuenteparrafo)
+}
+
+.btn--mp{
+    @include estilo_botonpago( $color_fuentesecundaria , red)
+}
+
+/*seteo animación*/
+@keyframes colorfruta{
+    from{opacity: 0;}
+
+    to{opacity: 100;}
+}
+
+
+@media only screen and (min-width: 600px){
+
+    ul{
+        flex-direction: row;}
+
+    
+    .div_prod{
+        display: flex;
+        flex-direction: row;}
+
+    .titulo_section{
+        font-size: 20px;
+    }
+
+    .butera{
+        width: 80%;
+        height: 25px;
+        
+    }
+
+    .grid_section a{
+        font-size: 15px;
+        color: blue;
+    }
+
+}

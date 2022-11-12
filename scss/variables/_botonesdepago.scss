@@ -1,0 +1,11 @@
+@mixin estilo_botonpago($color_letra , $color_fondo){
+    padding: 10px; /*espacio alrededor texto*/
+    background-color: $color_fondo; /*color botón*/
+    color: #ffffff; /*color texto*/
+    text-decoration: none; /*decoración texto*/
+    text-transform: uppercase; /*capitalización texto*/
+    font-family: 'Helvetica', sans-serif; /*tipografía texto*/
+    border-radius: 50px; /*bordes redondos*/
+    color: $color_letra; /*color texto*/
+
+}
